@@ -10,7 +10,7 @@
         
         // Metodo per ottenere il prezzo scontato
         public function getDiscountedPrice() {
-            $discountAmount = $this->getPrice() * ($this->discount / 100);
+            $discountAmount = ((int)$this->getPrice() * (int)$this->discount / 100);
             return $this->getPrice() - $discountAmount;
         }
     }
