@@ -1,15 +1,14 @@
 <?php 
     class Plays extends Product{
+        use Discountable;
+
         public $type;
         public $ProductDimensions;
         
-        public function __construct($name, $price, $description, $category, $imgProduct, $type,$ProductDimensions )
+        public function __construct($name, $price, $description, Categoria $category, $imgProduct, $type,$ProductDimensions )
         {
-            $this->name = $name;
-            $this->price = $price;
-            $this->description = $description;
-            $this->category = $category;
-            $this->imgProduct = $imgProduct;
+            parent::__construct($name, $price, $description, $category, $imgProduct);
+
             $this->type = $type;
             $this->ProductDimensions = $ProductDimensions;
         }

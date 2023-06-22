@@ -10,7 +10,11 @@ $categoriaGatto = new Categoria('Gatto');
 
 $PlaysListDog = [
     new Plays('palla', 20, 'Queste palle galleggiano en acqua e offrono una grande visibilità', $categoriaCane, 'https://www.animalhouseitalia.it/15814/ferribiella-palla-fuxtreme-ultrasuoni-per-cani-taglia-media.jpg', 'tipo', '8,89 x 8,89 x 8,89 cm; 100 grammi'),
+    new Plays('Cannetta gioco con topino sonoro', 5.99, 'All interno del topino è inserito un chip sonoro. Al minimo contatto il topino squittisce', $categoriaGatto, 'https://shop-cdn-m.mediazs.com/bilder/cannetta/gioco/con/topino/sonoro/1/400/14198_PLA_Karlie_Spielangel_Soundmaus_1.jpg', 'tipo', 'canna: 50cm x Filo da pesca 65cm; topolinoi 5.5 cm'),
 ];
+
+$PlaysListDog[0]->setDiscount(5);
+$PlaysListDog[1]->setDiscount(20);
 
 $DogsBedList = [
     new Dogsbed('cuccia', 30, 'Cuscino double-face estraibile, particolarmente morbido e avvolgente', $categoriaGatto, 'https://www.aquazoomaniashop.it/34082-large_default/dog-line-cuccia-svalbard-waterproof-per-cane.jpg', '50L x 37l x 17Sp cm', 'tipo', 'Cotone polipropilene'),
@@ -43,22 +47,25 @@ $FoodList = [
         <div>
             <h3 class="pb-2">Scegli tra i tanti giochi disponibili per il tuo Animale</h3>
             <?php foreach ($PlaysListDog as $play) { ?>
-                <div class="card " style="width: 18rem;">
-                    <div class="container">
-                        <div class="d-flex flex-column justify-content-between">
-                            <img src="<?= $play->imgProduct ?>" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <p class="card-text m-0 mb-3"><strong>Categoria:</strong> <?= $play->category->icon; $play->category->name ?></p>
-                                <p class="card-text"><strong>Gioco:</strong> <?= $play->name ?></p>
-                                <div class="collapse" id="collapseExample">
-                                    <p class="card-text"><strong>Prezzo Gioco:</strong> <?= $play->getPrice() ?></p>
-                                    <p class="card-text"><strong>Descrizione Gioco:</strong> <?= $play->description ?></p>
-                                    <p class="card-text"><strong>Dimensione Gioco:</strong> <?= $play->ProductDimensions ?></p>
-                                    <a href="#" class="btn btn-primary">Acquista Prodotto</a>
+                <div class="d-flex gap-3">
+                    <div class="card " style="width: 18rem;">
+                        <div class="container">
+                            <div class="d-flex flex-column justify-content-between">
+                                <img src="<?= $play->imgProduct ?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <p class="card-text m-0 mb-3"><strong>Categoria:</strong> <?= $play->category->icon; $play->category->name ?></p>
+                                    <p class="card-text"><strong>Gioco:</strong> <?= $play->name ?></p>
+                                    <div class="collapse" id="collapseExample">
+                                        <p class="card-text"><strong>Prezzo Gioco:</strong> <?= $play->getPrice() ?></p>
+                                        <p class="card-text"><strong>Prezzo Gioco:</strong> <?= $play->getDiscountedPrice() ?></p>
+                                        <p class="card-text"><strong>Descrizione Gioco:</strong> <?= $play->description ?></p>
+                                        <p class="card-text"><strong>Dimensione Gioco:</strong> <?= $play->ProductDimensions ?></p>
+                                        <a href="#" class="btn btn-primary">Acquista Prodotto</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center mb-3">
-                                <a class="text-center btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Read more</a>
+                                <div class="text-center mb-3">
+                                    <a class="text-center btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Read more</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,7 +109,7 @@ $FoodList = [
                                     <div class="d-flex flex-column justify-content-between">
                                         <img src="<?= $food->imgProduct ?>" class="card-img-top" alt="...">
                                         <div class="card-body text-center">
-                                            <p class="card-text m-0">Categoria: <?= $food->category->icon;$food->category->name ?></p>
+                                            <p class="card-text m-0">Categoria: <?= $food->category->icon; $food->category->name ?></p>
                                             <div class="collapse" id="collapseExample2">
                                                 <p class="card-text"><strong>Prodotto:</strong> <?= $food->name ?></p>
                                                 <p class="card-text"><strong>Prezzo Prodotto:</strong> <?= $food->getPrice() ?></p>
