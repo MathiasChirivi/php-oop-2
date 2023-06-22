@@ -22,14 +22,8 @@ require __DIR__ . "/../traits/Discount.php";
         }
 
         public function getPrice() {
-            if( is_null($this->price) || is_nan($this->price) ) {
-                throw new Exception("valore non numerico");
-            }
-    
-            if($this->price < 0) {
-                throw new RangeException("prezzo negativo");
-            } else if($this->price==0) {
-                throw new RangeException("prezzo zero");
+            if ($this->price === null) {
+                throw new Exception("Il prezzo del prodotto non è disponibile.");
             }
     
             return $this->price . " €";

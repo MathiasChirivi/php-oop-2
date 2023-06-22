@@ -10,8 +10,9 @@
         
         // Metodo per ottenere il prezzo scontato
         public function getDiscountedPrice() {
-            $discountAmount = ((int)$this->getPrice() * (int)$this->discount / 100);
-            return $this->getPrice() - $discountAmount;
+            $discountAmount = ((float)$this->getPrice() * ((float)$this->discount / 100));
+            $discountPrice = ((float)$this->getPrice() - (float)$discountAmount) ;
+            return number_format($discountPrice, 2, '.', '') . " €";
         }
     }
 ?>
