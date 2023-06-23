@@ -17,7 +17,7 @@ $PlaysListDog[0]->setDiscount(20);
 $PlaysListDog[1]->setDiscount(50);
 
 $DogsBedList = [
-    new Dogsbed('cuccia', 30, 'Cuscino double-face estraibile, particolarmente morbido e avvolgente', $categoriaGatto, 'https://www.aquazoomaniashop.it/34082-large_default/dog-line-cuccia-svalbard-waterproof-per-cane.jpg', '50L x 37l x 17Sp cm', 'tipo', 'Cotone polipropilene'),
+    new Dogsbed('cuccia', "prova", 'Cuscino double-face estraibile, particolarmente morbido e avvolgente', $categoriaGatto, 'https://www.aquazoomaniashop.it/34082-large_default/dog-line-cuccia-svalbard-waterproof-per-cane.jpg', '50L x 37l x 17Sp cm', 'tipo', 'Cotone polipropilene'),
 ];
 
 $FoodList = [
@@ -55,8 +55,7 @@ $FoodList[0]->setDiscount(40);
                             <div class="d-flex flex-column justify-content-between">
                                 <img src="<?= $play->imgProduct ?>" class="card-img-top" alt="...">
                                 <div class="card-body text-center">
-                                    <p class="card-text m-0 mb-3"><strong>Categoria:</strong> <?= $play->category->icon;
-                                                                                                $play->category->name ?></p>
+                                    <p class="card-text m-0 mb-3"><strong>Categoria:</strong> <?= $play->category->icon; $play->category->name ?></p>
                                     <p class="card-text"><strong>Gioco:</strong> <?= $play->name ?></p>
                                     <div class="collapse" id="collapseExample">
                                         <?php if ($play->getPrice() !== $play->getDiscountedPrice()) { ?>
@@ -89,10 +88,17 @@ $FoodList[0]->setDiscount(40);
                                 <div class="d-flex flex-column justify-content-between">
                                     <img src="<?= $Dogbed->imgProduct ?>" class="card-img-top" alt="...">
                                     <div class="card-body text-center">
-                                        <p class="card-text m-0"><strong>Categoria:</strong> <?= $Dogbed->category->icon;
-                                                                            $Dogbed->category->name ?></p>
+                                        <p class="card-text m-0"><strong>Categoria:</strong> <?= $Dogbed->category->icon; $Dogbed->category->name ?></p>
                                         <div class="collapse" id="collapseExample1">
-                                            <p class="card-text"><strong>Prezzo Gioco:</strong> <?= $Dogbed->getPrice() ?></p>
+                                        <small>Price: <?php
+                                                try{
+                                                    echo $Dogbed->getPrice(); 
+                                                }catch(Exception $e){
+                                                    echo "Prova : " . $e->getMessage();
+                                                }
+                                                ?>
+                                            </small>
+                                            <!-- <p class="card-text"><strong>Prezzo Gioco:</strong> <?= $Dogbed->getPrice() ?></p> -->
                                             <p class="card-text"><strong>Descrizione Gioco:</strong> <?= $Dogbed->description ?></p>
                                             <p class="card-text"><strong>Dimensione Cuccia:</strong> <?= $Dogbed->BedDimension ?></p>
                                             <a href="#" class="btn btn-primary">Acquista Prodotto</a>

@@ -22,8 +22,8 @@ require __DIR__ . "/../traits/Discount.php";
         }
 
         public function getPrice() {
-            if ($this->price === null) {
-                throw new Exception("Il prezzo del prodotto non è disponibile.");
+            if(!is_numeric($this->price) || $this->price < 0){
+                throw new Exception('Il dato non è numerico o è minore di 0');
             }
     
             return $this->price . " €";
